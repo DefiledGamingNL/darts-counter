@@ -1,7 +1,10 @@
 $(document).ready(function () {
-	if (myConfig.hasGameStarted) {
+	if (mySettings.hasGameStarted) {
 		startFrom.disabled = true;
 		amountToWin.disabled = true;
+	}
+	if (pName.value === "") {
+		addPlayerButton.disabled = true;
 	}
 });
 
@@ -18,6 +21,12 @@ const bestOfTitle = document.querySelector("#bestOfTitle");
 const p1Display = document.querySelector("#p1Display");
 const p2Display = document.querySelector("#p2Display");
 
+// CONTAINERS
+const p1Score = document.querySelector("#p1Score");
+const p2Score = document.querySelector("#p2Score");
+let pName = document.querySelector("#playerNameOne");
+let pNameTwo = document.querySelector("#playerNameTwo");
+let playerName;
 // GAME SETTINGS OBJECT
 let mySettings = {
 	scoreP1: 0,
@@ -30,23 +39,17 @@ let mySettings = {
 };
 
 // EVENT LISTENERS
-amountToWin.addEventListener("change", function () {
-	if (mySettings.gameSetup.amountToWin === 0) {
-		mySettings.gameSetup.amountToWin = this.value;
-		bestOfTitle.textContent = mySettings.gameSetup.amountToWin;
-	} else {
-		alert("Graag het spel eerst resetten!");
-	}
-});
 
-startFrom.addEventListener("change", function () {
-	if (mySettings.gameSetup.startFrom === 0) {
-		mySettings.gameSetup.startFrom = this.value;
-		p1Display.textContent = mySettings.gameSetup.startFrom;
-		p2Display.textContent = mySettings.gameSetup.startFrom;
-	} else {
-		alert("Graag het spel eerst resetten!");
-	}
+addPlayerButton.addEventListener("click", addAPlayer);
+
+amountToWin.addEventListener("change", amountToWinFunc);
+
+startFrom.addEventListener("change", startFromFunc);
+
+pName.addEventListener("change", function () {
+	playerName = this.value;
+	console.log(playerName);
+	addPlayerButton.disabled = false;
 });
 
 resetBtn.addEventListener("click", reset);
@@ -63,6 +66,17 @@ function startGame() {
 	}
 }
 
+function addAPlayer() {
+	if (pName.value !== "") {
+		p1Score.setAttribute("placeholder", playerName);
+		pName.value = "";
+		addPlayerButton.disabled = true;
+		console.log(playerName);
+	} else {
+		alert("Voer eerst een naam in!");
+	}
+}
+
 function reset() {
 	mySettings.scoreP1 = 0;
 	mySettings.scoreP2 = 0;
@@ -71,5 +85,24 @@ function reset() {
 	mySettings.gameSetup.startFrom = 0;
 	p1Display.textContent = 0;
 	p2Display.textContent = 0;
-	bestOfTitle.textContent = "Best of ???";
+	bestOfTitle.textContent = "Best of ?";
+}
+
+function amountToWinFunc() {
+	if (mySettings.gameSetup.amountToWin === 0) {
+		mySettings.gameSetup.amountToWin = this.value;
+		bestOfTitle.textContent = mySettings.gameSetup.amountToWin;
+	} else {
+		alert("Graag het spel eerst resetten!");
+	}
+}
+
+function startFromFunc() {
+	if (mySettings.gameSetup.startFrom === 0) {
+		mySettings.gameSetup.startFrom = this.value;
+		p1Display.textContent = mySettings.gameSetup.startFrom;
+		p2Display.textContent = mySettings.gameSetup.startFrom;
+	} else {
+		alert("Graag het spel eerst resetten!");
+	}
 }
