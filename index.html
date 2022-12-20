@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Darts Counter</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+		<link rel="stylesheet" href="assets/css/app.css" />
+	</head>
+	<body>
+		<header id="header"></header>
+		<main id="mainContent">
+			<div class="container">
+				<section class="section">
+					<div class="gameTitle">
+						<h1 class="title">Darts Counter</h1>
+						<h2 class="subtitle">Een simpele darts counter om de <strong>standen bij te houden </strong></h2>
+						<div class="columns">
+							<h3 class="column is-one-quarter bestOfContainer mb-2">Spel Instellingen</h3>
+							<h3 class="column displayOfScore mb-2">Spel</h3>
+						</div>
+
+						<div class="columns">
+							<div id="gameSettingsGeneral" class="column is-one-quarter">
+								<div class="gameSettings">
+									<div class="form-group scoreStartNumber mt-2 mb-2">
+										<select class="form-field" id="startFrom">
+											<option value="Select Game Mode">---501 OR 301---</option>
+											<option value="501">501</option>
+											<option value="301">301</option>
+										</select>
+									</div>
+
+									<div class="form-group gamesToWin">
+										<select class="form-field" id="amountToWin">
+											<option value="Select Game Mode">---BO5 OR BO3---</option>
+											<option value="Best of 5">Best of 5</option>
+											<option value="Best of 3">Best of 3</option>
+										</select>
+									</div>
+
+									<div class="form-group totalScore">
+										<h3 id="bestOfTitle" class="title">Best of ???</h3>
+									</div>
+
+									<div class="form-group">
+										<button class="button is-responsive is-dark" id="addPlayerButton">Voeg speler toe</button>
+									</div>
+								</div>
+							</div>
+							<div class="column">
+								<div class="gameArea">
+									<div class="is-flex is-justify-content-center">
+										<div class="form-group">
+											<input class="form-field mb-2 mt-2 mr-2" type="number" name="playerOneScore" id="p1Score" placeholder="Player 1" />
+											<span class="mr-2 mb-2 amountScore" id="p1Display">0</span>
+											<span class="mr-2 mb-2 legsScore" id="p1ScoreDisplay">0</span>
+										</div>
+										<div class="form-group">
+											<input class="form-field mb-2 mt-2 ml-2" type="number" name="playerTwoScore" id="p2Score" placeholder="Player 2" />
+											<span class="ml-2 mb-2 amountScore" id="p2Display">0</span>
+											<span class="ml-2 mb-2 legsScore" id="p2ScoreDisplay">0</span>
+										</div>
+									</div>
+
+									<div class="buttonsContainer is-flex is-flex-direction-column is-align-items-center">
+										<div class="submitButton mb-2">
+											<button class="button is-responsive is-dark" id="submitScore">Bevestig</button>
+										</div>
+										<div class="resetButton mb-2">
+											<button class="button is-responsive is-dark" id="resetButton">Reset</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+
+		<footer class="footer">
+			<div class="content has-text-centered">
+				<p><strong> &copy; Darts Counter 2022</strong> door <a href="#">Danny Heijnen</a>.</p>
+			</div>
+		</footer>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+		<script src="assets/js/app.js"></script>
+	</body>
+</html>
